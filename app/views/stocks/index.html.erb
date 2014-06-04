@@ -1,0 +1,13 @@
+<table class="portfolio span12">
+  <tr>
+    <th class='ticker'   >Ticker</th>
+    <th class='price'    >Price</th>
+    <th class='marketcap'>Market Cap</th>
+    <th class='multiples'>CY P/E</th>
+    <th class='multiples'>NY P/E</th>
+    <th class='multiples'>P/B</th>
+    <th class='multiples'>Short Ratio</th>
+    <th class='multiples'>Dividend Yield</th>
+  </tr>
+  <%= render partial: 'stock', collection: @stocks %>
+</table>

@@ -1,0 +1,10 @@
+<tr>
+  <td class='ticker'   ><%= stock.ticker %></td>
+  <td class='price'    ><%= number_to_currency stock.price, precision: 2 %></td>
+  <td class='marketcap'><%= number_to_currency stock.market_cap/1_000_000, precision: 0 %></td>
+  <td class='multiples'><%= number_to_human stock.price_earnings_current_year, units: {unit: 'x'} %></td>
+  <td class='multiples'><%= number_to_human stock.price_earnings_next_year, units: {unit: 'x'} %></td>
+  <td class='multiples'><%= number_to_human stock.price_book, units: {unit: 'x'} %></td>
+  <td class='multiples'><%= number_to_human stock.short_ratio, units: {unit: 'x'} %></td>
+  <td class='multiples'><%= number_to_percentage stock.dividend_yield, precision: 1 %></td>
+</tr>
