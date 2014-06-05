@@ -7,13 +7,18 @@ class StocksController < ApplicationController
     @stock = Stock.where(ticker: params[:id].upcase).first
   end
 
+  def new
+    @stock = Stock.new    
+  end
+
   def create
-    Stock.upsert_ticker(stock_params[:ticker])
+    Stock.upsert_ticker(stock_params)
+    redirect_to '/stocks'
   end
 
   private
 
     def stock_params
-      params.require(:stock).permit(:ticker)
+      params.require(:stock).permit(:ticker, :portfolios)
     end
 end

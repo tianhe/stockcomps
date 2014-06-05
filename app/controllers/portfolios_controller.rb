@@ -4,11 +4,16 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    @portfolio = Porfolio.where(name: portfolio_params[:name]).first
+    @portfolio = Portfolio.find(params[:id])
+  end
+
+  def new
+    @portfolio = Portfolio.new    
   end
 
   def create
-    Portfolio.create(name: portfolio_params[:name])
+    portfolio = Portfolio.create(name: portfolio_params[:name])
+    redirect_to '/portfolios'
   end
 
   def update
@@ -17,6 +22,6 @@ class PortfoliosController < ApplicationController
   private
 
     def portfolio_params
-      params.require(:portfolio).permit(:name)
+      params.require(:portfolio).permit(:name, :stocks)
     end
 end

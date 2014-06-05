@@ -3,6 +3,7 @@ class Stock
   extend Formatter
   extend Importer
   has_and_belongs_to_many :portfolios, index: true
+  accepts_nested_attributes_for :portfolios
 
   field :ticker, type: String
   field :current_year_sales, type: BigDecimal
@@ -28,8 +29,8 @@ class Stock
 
   index({ ticker: 1 }, { unique: true })
 
-  def self.upsert_ticker ticker
-    attributes = attributes_from_stock_quote(ticker)    
+  def self.upsert_ticker params
+    attributes = attributes_from_stock_quote(params[:ticker])
     Stock.where(ticker: attributes[:ticker]).find_and_modify(attributes, upsert: true)
   end
 end

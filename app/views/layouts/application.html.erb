@@ -38,7 +38,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
@@ -46,12 +46,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Stock Comps</a>
+          <a class="brand" href="/">Stock Comps</a>
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to "Portfolios", '/portfolios' %>
+            </li>
+            <li>
+              <%= link_to "+Portfolio", '/portfolios/new' %>
+            </li>            
+            <li>
+              <%= link_to '+Stock', '/stocks/new' %>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container main">
       <div class="row">
         <div class="span9">
           <%= bootstrap_flash %>

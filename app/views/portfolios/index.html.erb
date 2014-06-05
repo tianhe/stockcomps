@@ -1,0 +1,7 @@
+<div id='portfolios'>
+  <ul id='portfolios-list'>
+  <% @portfolios.each do |p| %>
+    <li><%= link_to p.name, "/portfolios/#{p._id}" %></li>
+  <% end %>
+  </ul>
+</div>
