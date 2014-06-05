@@ -30,7 +30,16 @@ class Stock
   index({ ticker: 1 }, { unique: true })
 
   def self.upsert_ticker params
+    if portfolio_names = params.delete(:portfolios)
+      portfolio_names = portfolio_names.split(",").map(&:strip)
+      portfolios = portfolio_names.map do |n|
+        Portfolio.where(name: n).first || Portfolio.create(name: n)
+      end
+    end
+
     attributes = attributes_from_stock_quote(params[:ticker])
-    Stock.where(ticker: attributes[:ticker]).find_and_modify(attributes, upsert: true)
+    Stock.where(ticker: attributes[:ticker]).find_and_modify(attributes, upsert: true)        
+    Stock.where(ticker: attributes[:ticker]).first.portfolios << portfolios
+    Stock.where(ticker: attributes[:ticker]).first
   end
 end
