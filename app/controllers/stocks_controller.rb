@@ -13,7 +13,7 @@ class StocksController < ApplicationController
 
   def create
     Stock.upsert_ticker(stock_params)
-    redirect_to '/stocks'
+    redirect_to '/stocks/new'
   end
 
   private
